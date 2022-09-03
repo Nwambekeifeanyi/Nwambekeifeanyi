@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+				<meta charset="UTF-8">
+				<title>calculator</title>
+				<style>
+  
+				*{
+								padding:0;
+								margin:0;
+								box-sizing:border-box;
+				}
+				
+				@media only screen and (max-width:600px) {
+  
+  body{
+								display: flex;
+								justify-content: center;
+								align-items: center;
+								height:100vh;
+								background-image:      linear-gradient(white, #36401b);
+				}
+#container{
+          background-color:#000000;
+								border:2px solid black;
+								height:60%;
+								width:80%;
+								border-radius:8px;
+				}
+				
+	#name{
+								/*	border:2px solid black;*/
+								height:20px;
+								width:70px;
+								float: right;
+								margin-top:5px;
+          margin-right:5px;
+          
+
+				}
+				#time{
+								/*	border:2px solid black;*/
+								height:20px;
+								width:70px;
+								margin-top:5px;
+          margin-left:5px;
+         
+
+				}
+				
+				#screen{
+			     	background-color:#b3b3b3;
+								border:2px solid black;
+								height:60px;
+								width:88%;
+								margin-top:5px;
+          margin-left:5%;
+          font-size:1.2rem;
+          padding:6% 5%;
+          border-radius:21px;
+          overflow: hidden;
+          font-weight:700;
+          transition:1s;
+          box-sizing:border-box;
+          text-align: right;
+				}
+				
+						#btn{
+								/*	border:2px solid black;*/
+								height:70%;
+								width:96%;
+								margin-top:20px;
+          margin-left:2%;
+				}
+				button {
+								height:43px;
+								width:43px;
+								margin:5px;
+		   	border:2px solid #98ff;								
+							border-radius:100%;
+							font-size:1.5rem;
+							font-weight:700;
+							color:#ffeaea;
+				}
+					#edit{
+							/*	border:2px solid black;*/
+								height:25%;
+								width:75%;
+								display: block;
+								justify-content: center;
+								align-items: center;
+								padding-left:5%;
+								
+								
+				}
+				
+				#numbers{
+								/*border:2px solid black;*/
+								height:75%;
+								width:75%;
+								display: block;
+								justify-content: center;
+								align-items: center;
+								padding-left:5%;
+								
+								
+								
+								
+								
+				}	
+					#sign{
+							/*	border:2px solid black;*/
+								height:100%;
+								width:25%;
+								float: right;
+								display: block;
+								justify-content: center;
+								align-items: center;		
+				}
+					#sign #equals{
+								height:43px;
+								width:45px;
+								margin-top:5px;
+								
+				}
+				#sign #times{
+								margin-top:25px;
+				}
+				
+				#numbers button {
+				background-color:#77a870;
+								}
+								
+								#sign button {
+				background-color:#a87e7e;
+								}
+								#edit button {
+				background-color:#5464a8;
+				font-size:1rem;
+								}
+	.lent{
+					font-size:.5rem;
+	}
+	
+  
+}
+			
+
+@media only screen and (max-width:9px) {
+  body {
+    background-color: lightblue;
+  }
+  #container{
+          background-color:;
+								border:2px solid black;
+								height:60%;
+								width:80%;
+								border-radius:8px;
+				}
+}
+				</style>
+</head>
+<body>
+				<div id="container">
+								<div id="name"></div>
+								<div id="time"></div>
+						   <div id="screen"></div> 
+						   <div id="btn">
+						  
+						   	<div id="sign">
+ 					<button onclick="display('%')">%</button>		
+<button onclick="display('*')" id="times">*</button>		
+<button onclick="display('-')">-</button>
+<button onclick="display('+')">+</button>			
+<button onclick="results()" id="equals">=</button>	   				
+						   	</div>
+						   	
+						   <div id="edit">
+<button onclick="deleteAll()">C</button>
+<button onclick="fun()">DEL</button>
+<button onclick="display('/')">/</button>		
+</div>
+						   	
+						   	
+ <div id="numbers">
+ 				<button onclick="display('7')">7</button>
+<button onclick="display('8')">8</button>
+<button onclick="display('9')">9</button>
+<button onclick="display('4')">4</button>
+			<button onclick="display('5')">5</button>
+					<button onclick="display('6')">6</button>
+					<button onclick="display('1')">1</button>
+				<button onclick="display('2')">2</button>
+			<button onclick="display('3')">3</button>
+<button onclick="display('0')">0</button>
+<button onclick="display('00')">00</button>
+<button onclick="display('.')">.</button>
+</div>	
+
+</div>					
+</div>	
+   		 
+   		   		 
+</div>
+</div>
+				<script>
+			let screen=document.getElementById("screen")
+			let btn=document.getElementById("btn")
+			let equals=document.getElementById("equals")
+			let num="";
+			//function to write numbers
+	function display(num){
+	let ans=screen.innerHTML+=num;
+	if(ans.length>13){
+				screen.style.fontSize="1.2rem";
+	}
+	if(ans.length>18){
+				screen.style.fontSize="1rem";
+	}
+	if(ans.length>22){
+				screen.style.fontSize=".8rem";
+	}
+	if(ans.length>27){
+				screen.style.fontSize=".6rem";
+	}
+	if(ans.length>36){
+				screen.style.fontSize=".4rem";
+	}
+	if(ans.length>43){
+				screen.style.fontSize=".2rem";
+	}
+	if(ans.length>46){
+				screen.style.fontSize=".1rem";
+	}
+	if(ans.length>50){
+				screen.style.fontSize=".01rem";
+	}
+	}
+	
+//equals
+function results(){
+let ans=screen.innerHTML;
+let gottenAns=eval(ans);
+	screen.innerHTML=gottenAns;
+	screen.style.fontSize="1.2rem";
+if(screen.innerHTML<0){
+	screen.style.color="red";	
+}
+	if(ans.length>22){
+				screen.style.fontSize=".8rem";
+	}
+	if(ans.length>27){
+				screen.style.fontSize=".6rem";
+	}
+	if(ans.length>36){
+				screen.style.fontSize=".4rem";
+	}
+	if(ans.length>43){
+				screen.style.fontSize=".2rem";
+	}
+	if(ans.length>46){
+				screen.style.fontSize=".1rem";
+	}
+	if(ans.length>50){
+				screen.style.fontSize=".01rem";
+	}
+	if(ans.length===0){
+		screen.innerHTML="";
+}
+	
+else{
+				screen.style.color="black";	
+}
+}
+//clear
+function deleteAll(){
+	screen.innerHTML="";
+	screen.style.fontSize="1.6rem";
+}
+
+//	delete a number
+function fun(){
+				let entries=screen.innerHTML;		
+				let ans=screen.innerHTML;
+let d=entries.slice(0,-1);
+screen.innerHTML=d;		
+if(ans.length<14){
+				screen.style.fontSize="1.6rem";
+	}
+if(ans.length>18){
+				screen.style.fontSize="1rem";
+	}
+	if(ans.length>22){
+				screen.style.fontSize=".8rem";
+	}
+	if(ans.length>27){
+				screen.style.fontSize=".6rem";
+	}
+	if(ans.length>36){
+				screen.style.fontSize=".4rem";
+	}
+	if(ans.length>43){
+				screen.style.fontSize=".2rem";
+	}
+	if(ans.length>46){
+				screen.style.fontSize=".1rem";
+	}
+	if(ans.length>50){
+				screen.style.fontSize=".01rem";
+	}
+	if(ans.length===0){
+		screen.innerHTML="";
+}
+	 
+}
+
+				</script>
+</body>
+</html>
